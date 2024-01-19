@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { db, storage } from '../../firebase.config';
+import { db, storage } from '../../firebase';
 import { getAuth } from 'firebase/auth';
 
 function Post() {
@@ -32,6 +32,7 @@ function Post() {
                 userImg: auth.currentUser.photoURL,
                 postImg: url,
                 description,
+                likes: 0,
                 time: serverTimestamp(),
             }
             const saveData = await addDoc(collection(db, "post"), data);
