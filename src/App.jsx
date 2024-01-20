@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { RecoilRoot } from "recoil";
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -7,7 +8,6 @@ import Auth from "./components/Auth";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
 import Post from "./components/Post";
-import Feed from "./components/Feed";
 import PostDetails from "./components/PostDetails";
 import Explore from "./components/Explore";
 import Profile from "./components/Profile";
@@ -17,10 +17,10 @@ function App() {
   return (
     <BrowserRouter>
       {/* <h1>Firebase Crud Operations</h1> */}
+      <RecoilRoot>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/feed" element={<Feed/>}/>
         <Route path="/explore" element={<Explore/>}/>
         <Route path="/post" element={<Post/>}/>
         <Route path="/profile/:id" element={<Profile/>}/>
@@ -32,8 +32,9 @@ function App() {
         </Route>
         <Route path="/*" element={<Page404/>}/>
       </Routes>
+      </RecoilRoot>
     </BrowserRouter>
   )
 }
 
-export default App
+export default App;

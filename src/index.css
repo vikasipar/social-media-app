@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    background-color: rgb(252, 252, 252);
+    font-family: 'Handlee', cursive;
+    color: rgb(104, 104, 104);
+}
+#logo{
+    /* color: ; */
+    color: rgb(153, 0, 255);
+    font-family: 'Dancing Script', cursive;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}

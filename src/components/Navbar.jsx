@@ -1,59 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { auth } from '../../firebase';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { db } from '../../firebase';
-import { doc, setDoc, getDoc, serverTimestamp} from 'firebase/firestore';
-import { Link } from 'react-router-dom';
+import { FaHome } from "react-icons/fa";
+import { MdAddBox } from "react-icons/md";
+import { BsPeopleFill, BsSearch } from "react-icons/bs";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { userAtom } from '../store/atoms/user';
+
 
 function Navbar() {
+    const userDetails = useRecoilValue(userAtom);
+    const setUserState = useSetRecoilState(userAtom);
+    const [showOptions, setShowOptions] = useState(false);
+    const navigate = useNavigate();
 
-    const handleLogin = async () => {
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        // console.log(result.user);
-        // console.log(auth);
-        const user = result.user;
-
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if(!docSnap.exists()){
-            await setDoc(doc(db, "users", user.uid),{
-                name: user.displayName,
-                email: user.email,
-                img: user.photoURL,
-                timestamp: serverTimestamp(),
-            })
-        }
-        alert("Logged in!");
-    }
-    
     const handleLogout = () => {
         auth.signOut();
-        window.localStorage.removeItem("userId");
+        // window.localStorage.removeItem("userId");
         alert("Logged out!");
+        navigate('/');
+        setUserState("");
     }
 
+    const handleShowOptions = () => {
+        setShowOptions(!showOptions);
+    }
 
   return (
-    <div className='w-full px-14 py-2 flex justify-between items-center sticky top-0 mb-14 overflow-x-hidden'>
-        <Link to='/'>Ezgram</Link>
+    <div className='w-full px-14 py-2 flex justify-between items-baseline top-0 mb-5 overflow-x-hidden text-2xl z-40 sticky'>
+        <Link to='/' className='text-4xl' id='logo'>Ezgram</Link>
         <div className='w-[60%] flex items-center justify-between'>
-            <div className='border-[1px] border-gray-300 py-1 px-9'>
+            <div className='flex items-center gap-2 border-[1px] border-[#9900ffe8] rounded py-1 px-9 text-lg'>
+                <BsSearch className='text-gray-400 font-normal'/>
                 <input type='text' placeholder='Search' className='border-none outline-none'/>
             </div>
             <div className='flex gap-5 items-center'>
-                <Link to='/'><span>Home</span></Link>
-                <Link to='/post'><span>Post</span></Link>
-                <Link to='/explore'><span>Explore</span></Link>
+                <NavLink to='/' style={({ isActive }) => ({ borderBottom: isActive && "solid 3px #9900ffe8", color: "#9900ffe8"})} className='p-1'><span><FaHome/></span></NavLink>
+                <NavLink to='/post' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><MdAddBox/></span></NavLink>
+                <NavLink to='/explore' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><BsPeopleFill/></span></NavLink>
             {
-                auth.currentUser ?
+                userDetails ?
                 <>
-                    <button onClick={handleLogout}>Logout</button>
-                    <Link to={`/profile/${auth.currentUser.uid}`}><img src={auth.currentUser?.photoURL} alt={auth.currentUser?.displayName} className='w-10 rounded-full' /></Link>
+                    {/* <button onClick={handleLogout}>Logout</button> */}
+                    <div><img src={auth.currentUser?.photoURL} alt={auth.currentUser?.displayName} onClick={handleShowOptions} className='w-10 rounded-full cursor-pointer relative' /></div>
+                    {showOptions && <div className='flex flex-col absolute top-16 right-1 z-40 border-2 border-[#9900FF] py-4 px-14 gap-2'>
+                        <Link to={`/profile/${auth.currentUser.uid}`} onClick={handleShowOptions}>Profile</Link>
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>}
                     {/* <span>{auth.currentUser?.displayName}</span> */}
                 </> :
                 <>
-                    <button onClick={handleLogin}>Sign in w/ Google</button>
+                    {/* <button onClick={handleLogin} className='border-2 border-black py-1 px-3 rounded-2xl text-base font-bold'>Sign in</button> */}
+                    <Link to='/login' className='border-2 text-white bg-[#9900FF] py-1 px-3 rounded-2xl text-base font-bold'>Signin</Link>
                 </>
             }
             </div>
