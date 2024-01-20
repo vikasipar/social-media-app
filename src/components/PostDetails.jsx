@@ -15,13 +15,22 @@ function PostDetails() {
 
     const loginUserId = window.localStorage.getItem("userId");
     const loginUser = userDetails?.userId;
-
+    
     useEffect(() => {
-        const getSingleDoc = async(id) => {
-            const ref = doc(db, "post", id);
-            getDoc(ref).then((doc) => setData(doc.data()));
-        };
-        getSingleDoc(id);
+        if(id<50){
+            const getSingleDoc = async(id) => {
+                const response = await fetch(`https://freetestapi.com/api/v1/posts/${id}`);
+                const data = await response.json();
+                setData(data);
+            };
+            getSingleDoc(id);
+        }else{
+            const getSingleDoc = async(id) => {
+                const ref = doc(db, "post", id);
+                getDoc(ref).then((doc) => setData(doc.data()));
+            };
+            getSingleDoc(id);
+        }
     },[id]);
 
     const deletePost = async(id) => {
@@ -32,9 +41,13 @@ function PostDetails() {
     }
 
     const handleAddLikes = async(id) => {
-        await updateDoc(doc(db, "post", id),{
-           "likes": increment(1),
-        });
+        if(id<50){
+            alert('This post is not allowed to like');
+        }else{
+            await updateDoc(doc(db, "post", id),{
+                "likes": increment(1),
+             });
+        }
     };
 
   return (
@@ -42,15 +55,16 @@ function PostDetails() {
         <div key={id} className='w-[90%] md:w-[50%] mx-auto py-3 my-5 border-2 border-gray-300 shadow rounded overflow-hidden'>
             <div className='flex px-[5%] items-center justify-between'>
                 <div className='flex items-center gap-4'>
-                    <img src={data.userImg} alt={data.userId} className='w-12 rounded-full' />
+                    <img src={data.userImg ? data.userImg : "https://walnuteducation.com/static/core/images/icon-profile.png"} alt={data.userId && data.id} className='w-12 rounded-full' />
                     <h2 className='text-xl'>{data.author}</h2>
                 </div>
                 {
-                    data.userId == loginUser && <button className='text-red-600 text-xl cursor-pointer' onClick={() => deletePost(id)}>Delete Post</button>
+                    data.userId && data.userId == loginUser && <button className='text-red-600 text-xl cursor-pointer' onClick={() => deletePost(id)}>Delete Post</button>
                 }
             </div>
-            <h2 className='pl-[5%] text-2xl my-2'>{data.description}</h2>
-            <img src={data.postImg} alt={data.description} className='w-auto mx-auto px-5 max-h-96 aspect-auto border-2 border-gray-200 rounded'/>
+            <h2 className='pl-[5%] text-2xl my-2'>{data.description ? data.description : data.title}</h2>
+            <h2 className='pl-[5%] text-xl my-2'>{data.content && data.content}</h2>
+            <img src={data.postImg && data.postImg} alt={data.description} className='w-auto mx-auto px-5 max-h-96 aspect-auto border-2 border-gray-200 rounded'/>
             <div className='pl-[5%] flex justify-around my-1 text-xl'>
                 <span onClick={()=>handleAddLikes(id)} className='cursor-pointer flex items-center gap-2'><FaHeart/>Likes ({data.likes})</span>
                 <span className='flex items-center gap-2'><FaCommentAlt/>Comments</span>

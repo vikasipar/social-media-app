@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { FaHome } from "react-icons/fa";
-import { MdAddBox } from "react-icons/md";
+import { MdAddBox, MdExplore } from "react-icons/md";
 import { BsPeopleFill, BsSearch } from "react-icons/bs";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
@@ -37,7 +37,7 @@ function Navbar() {
             <div className='flex gap-5 items-center'>
                 <NavLink to='/' style={({ isActive }) => ({ borderBottom: isActive && "solid 3px #9900ffe8", color: "#9900ffe8"})} className='p-1'><span><FaHome/></span></NavLink>
                 <NavLink to='/post' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><MdAddBox/></span></NavLink>
-                <NavLink to='/explore' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><BsPeopleFill/></span></NavLink>
+                <NavLink to='/explore' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><MdExplore/></span></NavLink>
             {
                 userDetails ?
                 <>
