@@ -8,7 +8,7 @@ function Explore() {
   useEffect(() => {
     const fetchPosts = async() => {
       try{
-        const response = await fetch('https://freetestapi.com/api/v1/posts');
+        const response = await fetch('https://freetestapi.com/api/v1/posts?limit=30');
         const data = await response.json();
         setPosts(data);
         setIsloading(false);
@@ -22,13 +22,12 @@ function Explore() {
 
   return (
     <div className='w-full relative z-10 mt-20'>
-      {/* <h1>Explore</h1> */}
       {
         isloading ? 
         <h1>loading...</h1>
         :
-        (posts.map((post) => (
-          <Card post={post} key={post.comments.id}/>
+        (posts.map((post, index) => (
+          <Card post={post} key={index}/>
       )))
       }
     </div>

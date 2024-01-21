@@ -64,7 +64,7 @@ function PostDetails() {
             </div>
             <h2 className='pl-[5%] text-2xl my-2'>{data.description ? data.description : data.title}</h2>
             <h2 className='pl-[5%] text-xl my-2'>{data.content && data.content}</h2>
-            <img src={data.postImg && data.postImg} alt={data.description} className='w-auto mx-auto px-5 max-h-96 aspect-auto border-2 border-gray-200 rounded'/>
+            <img src={data.postImg ? data.postImg : `https://picsum.photos/id/${id+53}/300/200`} alt={data.description} title={id+53-100} className='w-auto mx-auto px-5 max-h-96 aspect-auto border-2 border-gray-200 rounded'/>
             <div className='pl-[5%] flex justify-around my-1 text-xl'>
                 <span onClick={()=>handleAddLikes(id)} className='cursor-pointer flex items-center gap-2'><FaHeart/>Likes ({data.likes})</span>
                 <span className='flex items-center gap-2'><FaCommentAlt/>Comments</span>

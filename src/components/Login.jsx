@@ -39,8 +39,8 @@ function Login() {
 
   return (
     <div className='w-full h-[80vh] flex flex-col'>
-      <div className='w-[45%] mx-auto py-9 my-auto space-y-24 border border-[#9900ffe8] bg-white rounded-lg shadow'>
-        <h1 className='w-full mx-auto text-5xl text-center font-bold'>Log In</h1>
+      <div className='w-[45%] mx-auto py-9 my-auto space-y-16 border border-gray-500 bg-white rounded-lg shadow'>
+        <h1 className='w-[90%] mx-auto text-5xl text-center font-bold border-b-2 pb-5 border-gray-400'>Log In</h1>
         <button onClick={handleLogin} className='border-2 border-[#9900ffe8] py-2 px-14 rounded-xl text-xl gap-9 font-bold flex items-center mx-auto'><FcGoogle className='text-5xl'/>Sign in with Google</button>
       </div>
     </div>

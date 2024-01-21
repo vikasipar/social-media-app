@@ -15,7 +15,7 @@ const Card = ({post}) => {
              });
         }
     };
-    
+
   return (
     <div key={post.id} className='w-[50%] mx-auto py-3 my-5 border-[1px] border-[#9900ffe8] bg-white shadow-lg rounded'>
         <Link to={`/post/${post.id}`}>
@@ -25,7 +25,7 @@ const Card = ({post}) => {
             </div>
             <h2 className='pl-[5%] text-2xl my-2'>{post.description ? post.description : post.title }</h2>
             <h2 className='pl-[5%] text-lg my-2'>{post.content && post.content }</h2>
-            <img src={post.postImg && post.postImg} alt={post.description} className='w-[90%] max-h-80 mx-auto aspect-auto border border-[#9900ffe8] rounded'/>
+            <img src={post.postImg ? post.postImg : `https://picsum.photos/id/${post.id+53}/200/300`} alt={post.description} className='w-[90%] max-h-80 mx-auto aspect-auto border border-[#9900ffe8] rounded'/>
         </Link>
         <div className='pl-[5%] flex justify-around my-1 text-xl'>
             <span onClick={()=>handleAddLikes(post.id)} className='cursor-pointer flex items-center gap-2'><FaHeart/>Likes ({post.likes})</span>
