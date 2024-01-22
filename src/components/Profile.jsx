@@ -38,12 +38,12 @@ function Profile() {
 
   return (
     <div>
-        <img src="https://static.vecteezy.com/system/resources/previews/002/885/318/large_2x/nature-green-tree-fresh-leaf-on-beautiful-blurred-soft-bokeh-sunlight-background-with-free-copy-space-spring-summer-or-environment-cover-page-template-web-banner-and-header-free-photo.jpg" alt="" className='absolute w-[80%] mx-[10%] border-2 border-green-200 z-10 max-h-52 opacity-70' />
+        <img src="https://t3.ftcdn.net/jpg/05/15/16/12/360_F_515161254_2cp9OEcNqERA2KHp2jqaFfvF7Ze5oO4I.jpg" alt="" className='absolute w-[80%] mx-[10%] border-2 border-green-200 z-10 max-h-52 opacity-80 rounded-2xl'/>
 
         <div className='flex items-end w-[60%] mx-auto gap-10 z-30 relative bg-transparent pt-32'>
             <img src={userDetails==null ? userdata.img : userDetails.userImg } alt="" className='rounded-full w-44 shadow-2xl'/>
             <div>
-               <h3 className='text-5xl font-semibold shadow-2xl'>{userDetails==null ? userdata.name : userDetails.userName}</h3>
+               <h3 className='text-5xl font-semibold shadow-2xl text-stone-700'>{userDetails==null ? userdata.name : userDetails.userName}</h3>
                 <h5 className='text-2xl'>{userDetails==null ? userdata.email : userDetails.userEmail}</h5> 
             </div>
             {/* <span>Edit Profile</span> */}
@@ -55,10 +55,10 @@ function Profile() {
             filteredPosts.length > 0 ? 
             filteredPosts.map((post) => (
                 <Link to={`/post/${post.id}`} className='w-[30%]' key={post.id}>
-                    <img src={post.postImg} alt='' className='aspect-square border-2 border-black h-fit'/>
+                    <img src={post.postImg} alt='' className='aspect-square border-2 border-[#9900ffe8] h-fit rounded'/>
                 </Link>
             )) 
-            : <span className='text-xl font-semibold text-gray-500'>{userDetails==null ? userdata.name : userDetails.userName} hasn't posted yet</span>
+            : <span className='text-xl font-semibold text-[#9900ffe8]'>{userDetails==null ? userdata.name : userDetails.userName} hasn't posted yet.</span>
             }
         </div>
     </div>

@@ -55,7 +55,7 @@ function PostDetails() {
         <div key={id} className='w-[90%] md:w-[50%] mx-auto py-3 my-5 border-2 border-gray-300 shadow rounded overflow-hidden'>
             <div className='flex px-[5%] items-center justify-between'>
                 <div className='flex items-center gap-4'>
-                    <img src={data.userImg ? data.userImg : "https://walnuteducation.com/static/core/images/icon-profile.png"} alt={data.userId && data.id} className='w-12 rounded-full' />
+                    <img src={data.userImg ? data.userImg : "https://th.bing.com/th/id/OIP.9a68s5XwkBi72-d-tph-qgHaHa?pid=ImgDet&w=161&h=161&c=7"} alt={data.userId && data.id} className='w-12 rounded-full opacity-70' />
                     <h2 className='text-xl'>{data.author}</h2>
                 </div>
                 {
@@ -65,9 +65,9 @@ function PostDetails() {
             <h2 className='pl-[5%] text-2xl my-2'>{data.description ? data.description : data.title}</h2>
             <h2 className='pl-[5%] text-xl my-2'>{data.content && data.content}</h2>
             <img src={data.postImg ? data.postImg : `https://picsum.photos/id/${id+53}/300/200`} alt={data.description} title={id+53-100} className='w-auto mx-auto px-5 max-h-96 aspect-auto border-2 border-gray-200 rounded'/>
-            <div className='pl-[5%] flex justify-around my-1 text-xl'>
-                <span onClick={()=>handleAddLikes(id)} className='cursor-pointer flex items-center gap-2'><FaHeart/>Likes ({data.likes})</span>
-                <span className='flex items-center gap-2'><FaCommentAlt/>Comments</span>
+            <div className='pl-[5%] flex justify-around mt-3 text-xl'>
+                <span onClick={()=>handleAddLikes(id)} className='cursor-pointer flex items-center gap-2'><FaHeart className='text-[#9900FF]'/>Likes ({data.likes})</span>
+                <span className='flex items-center gap-2'><FaCommentAlt className='text-[#9900FF]'/>Comments</span>
             </div>
             <Comments postId = {id} />
         </div>

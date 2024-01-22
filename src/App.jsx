@@ -11,6 +11,7 @@ import Post from "./components/Post";
 import PostDetails from "./components/PostDetails";
 import Explore from "./components/Explore";
 import Profile from "./components/Profile";
+import RandomUser from "./components/RandomUser";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/user" element={<RandomUser/>}/>
         <Route path="/explore" element={<Explore/>}/>
         <Route path="/post" element={<Post/>}/>
         <Route path="/profile/:id" element={<Profile/>}/>

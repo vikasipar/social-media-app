@@ -61,8 +61,8 @@ function Navbar() {
                 <BsSearch className='text-gray-400 font-normal'/>
                 <input type='text' placeholder='Search' className='border-none outline-none' onChange={handleSearchUser}/>
             </div>
-            <div className='flex gap-5 items-center'>
-                <NavLink to='/' style={({ isActive }) => ({ borderBottom: isActive && "solid 3px #9900ffe8", color: "#9900ffe8"})} className='p-1'><span><FaHome/></span></NavLink>
+            <div className='flex gap-5 items-center text-stone-600'>
+                <NavLink to='/' style={({ isActive }) => ({ borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><FaHome/></span></NavLink>
                 <NavLink to='/explore' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><MdExplore/></span></NavLink>
                 <NavLink to='/post' style={({ isActive }) => ({borderBottom: isActive && "solid 3px #9900ffe8", color: isActive && "#9900ffe8"})} className='p-1'><span><MdAddBox/></span></NavLink>
             {

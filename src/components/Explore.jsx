@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import RandomUser from './RandomUser';
 
 function Explore() {
   const [posts, setPosts] = useState(null);
@@ -21,6 +22,7 @@ function Explore() {
 },[]);
 
   return (
+    <>
     <div className='w-full relative z-10 mt-20'>
       {
         isloading ? 
@@ -31,6 +33,8 @@ function Explore() {
       )))
       }
     </div>
+    <RandomUser/>
+  </>
   )
 }
 

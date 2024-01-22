@@ -69,7 +69,7 @@ function Comments({postId}) {
         <h1 className='my-2'>Comments</h1>
         <form onSubmit={handleAddComment} className='sm:w-[90%] mx-1 sm:mx-auto'>
             <input type='text' placeholder='add comment...' onChange={(e) => setNewComment(e.target.value)} className='w-[77%] rounded px-3 py-1 border-2 border-[#9900ffe8] rounded-r-none'/>
-            <button type='submit' className='w-fit px-3 py-1 border-2 border-[#9900ffe8] bg-[#9900ffe8] rounded rounded-l-none text-white'>Add</button>
+            <button type='submit' className='w-fit px-3 py-1 border-2 border-[#9900ffe8] bg-[#9900FF] rounded rounded-l-none text-white'>Add</button>
         </form>
         <div>
             {
