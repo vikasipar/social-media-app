@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../store/atoms/user';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Post() {
     const auth = getAuth();
@@ -45,9 +46,13 @@ function Post() {
                 time: serverTimestamp(),
             }
             const saveData = await addDoc(collection(db, "post"), data);
-            alert("Image posted successfully!");
+            toast("Post added successfully!", {
+                type: "success",
+            });
         }else{
-            alert("Log in required!");
+            toast(" Please log in to proceed.", {
+                type: "r=warning",
+            });
         }
     }
 

@@ -8,6 +8,7 @@ import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { userAtom } from '../store/atoms/user';
 import { db } from '../../firebase';
 import { query, collection, onSnapshot} from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 
 function Navbar() {
@@ -43,7 +44,9 @@ function Navbar() {
 
     const handleLogout = () => {
         auth.signOut();
-        alert("Logged out!");
+        toast("Logged out successfully!",{
+            type: "warning",
+        });
         navigate('/');
         setUserState("");
     }
@@ -70,7 +73,7 @@ function Navbar() {
                 <>
                     {/* <button onClick={handleLogout}>Logout</button> */}
                     <div><img src={auth.currentUser?.photoURL} alt={auth.currentUser?.displayName} onClick={handleShowOptions} className='w-10 rounded-full cursor-pointer relative' /></div>
-                    {showOptions && <div className='flex flex-col absolute top-16 right-1 z-40 border-2 border-[#9900FF] py-4 px-14 gap-2'>
+                    {<div className='flex flex-col absolute top-16 right-1 z-30 border-2 border-[#9900FF] py-4 px-14 gap-2'>
                         <Link to={`/profile/${auth.currentUser.uid}`} onClick={handleShowOptions}>Profile</Link>
                         <button onClick={handleLogout}>Logout</button>
                     </div>}

@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { RecoilRoot } from "recoil";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -11,7 +13,6 @@ import Post from "./components/Post";
 import PostDetails from "./components/PostDetails";
 import Explore from "./components/Explore";
 import Profile from "./components/Profile";
-import RandomUser from "./components/RandomUser";
 
 function App() {
 
@@ -22,7 +23,6 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/user" element={<RandomUser/>}/>
         <Route path="/explore" element={<Explore/>}/>
         <Route path="/post" element={<Post/>}/>
         <Route path="/profile/:id" element={<Profile/>}/>
@@ -34,6 +34,7 @@ function App() {
         </Route>
         <Route path="/*" element={<Page404/>}/>
       </Routes>
+      <ToastContainer/>
       </RecoilRoot>
     </BrowserRouter>
   )

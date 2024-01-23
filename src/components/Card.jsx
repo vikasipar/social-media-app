@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 import { FaHeart, FaCommentAlt } from "react-icons/fa";
 import { db } from '../../firebase';
 import { doc, updateDoc, increment } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const Card = ({post}) => {
 
     const handleAddLikes = async(id) => {
         if(id<50){
-            alert('This post is not allowed to like');
+            toast(" This post is not available for likes",{
+                type: "error",
+            });
         }else{
             await updateDoc(doc(db, "post", id),{
                 "likes": increment(1),
+            });
+            toast("You've liked the post!", {
+                type: "success",
              });
         }
     };

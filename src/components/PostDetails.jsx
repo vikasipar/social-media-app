@@ -6,6 +6,7 @@ import Comments from './Comments';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../store/atoms/user';
 import { FaHeart, FaCommentAlt } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 function PostDetails() {
     const {id} = useParams();
@@ -34,7 +35,9 @@ function PostDetails() {
     },[id]);
 
     const deletePost = async(id) => {
-        alert("Warning: Post wil be deleted forever!");
+        toast("Post will be deleted forever", {
+            type: "warning",
+         });
         const delData = doc(db, "post", id);
         deleteDoc(delData);
         navigate(`/profile/${loginUserId}`);
@@ -42,10 +45,15 @@ function PostDetails() {
 
     const handleAddLikes = async(id) => {
         if(id<50){
-            alert('This post is not allowed to like');
+            toast(" This post is not available for likes",{
+                type: "error",
+            });
         }else{
             await updateDoc(doc(db, "post", id),{
                 "likes": increment(1),
+            });
+            toast("You've liked the post!", {
+                type: "success",
              });
         }
     };

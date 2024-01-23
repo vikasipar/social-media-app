@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, query, onSnapshot, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { getAuth } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 function Comments({postId}) {
     const auth = getAuth();
@@ -45,7 +46,9 @@ function Comments({postId}) {
     const handleAddComment = async(e) => {
         e.preventDefault();
         if(postId<50){
-            alert("You cannot comment on this post.")
+            toast(" This post is not available for comments",{
+                type: "error",
+            });
         }else{
             if(auth.currentUser){
                 await addDoc(collection(db, "comments"),{
@@ -55,10 +58,13 @@ function Comments({postId}) {
                     userImg: auth.currentUser.photoURL,
                     time: new Date(),
                 })
-                setNewComment("");
-                alert("Comment added!");
+                toast("Comment posted successfully!", {
+                    type: "success",
+                });
             }else{
-                alert("Login required!");
+                toast("Login required!", {
+                    type: "warning",
+                });
             }
         }
     };

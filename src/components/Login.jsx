@@ -7,6 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { userAtom } from '../store/atoms/user';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
+import { toast } from 'react-toastify';
 
 function Login() {
   const setUserState = useSetRecoilState(userAtom);
@@ -27,6 +28,7 @@ function Login() {
                 timestamp: serverTimestamp(),
             })
         }
+        toast('Login successful!');
         navigate('/');
 
         setUserState({
