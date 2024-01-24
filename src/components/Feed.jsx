@@ -19,7 +19,7 @@ function Feed() {
     }, []);
 
   return (
-    <div className='w-full relative z-10 mt-20'>
+    <div className='w-full relative z-10 mt-10 md:mt-20'>
         {posts.map((post) => (
 
             <Card post={post} key={post.id}/>

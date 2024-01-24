@@ -28,7 +28,9 @@ function Login() {
                 timestamp: serverTimestamp(),
             })
         }
-        toast('Login successful!');
+        toast('Login successful!', {
+          type: "success"
+        });
         navigate('/');
 
         setUserState({

@@ -23,7 +23,7 @@ const Card = ({post}) => {
     };
 
   return (
-    <div key={post.id} className='w-[50%] mx-auto py-3 my-5 border-[1px] border-[#9900ffe8] bg-white shadow-xl rounded'>
+    <div key={post.id} className='w-[80%] md:w-[50%] mx-auto py-3 my-5 border-[1px] border-[#9900ffe8] bg-white shadow-xl rounded'>
         <Link to={`/post/${post.id}`}>
             <div className='flex pl-[5%] items-center gap-4'>
                 <img src={post.userImg ? post.userImg : "https://th.bing.com/th/id/OIP.9a68s5XwkBi72-d-tph-qgHaHa?pid=ImgDet&w=161&h=161&c=7"} alt={post.userId} className='w-10 rounded-full opacity-70' />

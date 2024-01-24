@@ -43,7 +43,7 @@ function Stories() {
 
   return (
     <>
-    <div className='flex mx-auto overflow-scroll gap-1 px-5 relative pt-5 z-10 relative'>
+    <div className='flex mx-auto overflow-scroll gap-1 px-5 pt-5 z-10 relative'>
         {
             Array.from({length: end-start+1}, (_, index) => (
                 <img src={`https://picsum.photos/id/${start+index}/200`&& `https://picsum.photos/id/${start+index}/200`} onClick={() => handleShowStory(start+index)} alt="" key={start+index} className='w-20 border-2 border-dashed border-[#9900ffe8] rounded-full cursor-pointer' />
