@@ -65,8 +65,8 @@ function Navbar() {
   return (
     <>
     <div className='w-full px-2 md:px-14 py-2 flex justify-between items-center top-0 text-2xl z-30 sticky'>
-        <span><IoIosMenu onClick={handleSidebar} className='block md:hidden text-4xl ml-3 mr-7'/></span>
-        <Link to='/' className='mr-7 md:mr-auto text-4xl' id='logo'>Ezgram</Link>
+        <span><IoIosMenu onClick={handleSidebar} className='block md:hidden text-3xl ml-3 mr-4 cursor-pointer'/></span>
+        <Link to='/' className='mr-5 md:mr-auto text-3xl md:text-4xl' id='logo'>Ezgram</Link>
         <div className='w-[60%] flex items-center justify-between'>
             <div className='flex items-center gap-3 md:gap-2 border-[1px] border-[#9900ffe8] rounded py-1 px-2 md:px-9 text-base md:text-lg'>
                 <BsSearch className='text-gray-400 font-normal'/>
