@@ -29,8 +29,8 @@ const Card = ({post}) => {
                 <img src={post.userImg ? post.userImg : "https://th.bing.com/th/id/OIP.9a68s5XwkBi72-d-tph-qgHaHa?pid=ImgDet&w=161&h=161&c=7"} alt={post.userId} className='w-10 rounded-full opacity-70' />
                 <h2 className='text-xl'>{post.author}</h2>
             </div>
-            <h2 className='pl-[5%] text-2xl my-2'>{post.description ? post.description : post.title }</h2>
-            <h2 className='pl-[5%] text-lg my-2'>{post.content && post.content }</h2>
+            <h2 className='pl-[5%] text-xl md:text-2xl my-2'>{post.description ? post.description : post.title }</h2>
+            <h2 className='pl-[5%] text-base md:text-lg my-2'>{post.content && post.content }</h2>
             <img src={post.postImg ? post.postImg : `https://picsum.photos/id/${post.id+53}/200/300`} alt={post.description} className='hidden md:block w-[90%] max-h-80 mx-auto aspect-auto border border-[#9900ffe8] rounded'/>
             <img src={post.postImg ? post.postImg : `https://picsum.photos/id/${post.id+53}/200`} alt={post.description} className='block md:hidden w-[90%] max-h-80 mx-auto aspect-auto border border-[#9900ffe8] rounded'/>
         </Link>

@@ -30,9 +30,9 @@ function Sidebar() {
     }
 
   return (
-    <div className='h-full absolute top-0 block md:hidden w-full text-center bg-white/90 z-50 text-2xl'>
-        <IoMdClose onClick={handleSidebar} className='ml-[88%] mt-5 text-4xl text-right'/>
-        <div className='bg-transparent h-[40%] my-[45%] border-black text-4xl'>
+    <div className='h-full absolute top-0 block md:hidden w-full text-center bg-white/90 z-50 text-xl'>
+        <IoMdClose onClick={handleSidebar} className='ml-[88%] mt-5 text-3xl text-right'/>
+        <div className='bg-transparent h-[40%] my-[45%] border-black text-3xl'>
             <NavLink to='/' onClick={() => setSidebarState(false)} style={({ isActive }) => ({color: isActive && "#9900ffe8"})} className=''><span className='flex items-center bg-transparent gap-9 text-center w-[50%] mx-auto my-10'><FaHome className='bg-transparent'/>Home</span></NavLink>
             <NavLink to='/explore' onClick={() => setSidebarState(false)} style={({ isActive }) => ({color: isActive && "#9900ffe8"})} className=''><span className='flex items-center bg-transparent gap-9 text-center w-[50%] mx-auto my-10'><MdExplore className='bg-transparent'/>Explore</span></NavLink>
             <NavLink to='/post' onClick={() => setSidebarState(false)} style={({ isActive }) => ({color: isActive && "#9900ffe8"})} className=''><span className='flex items-center bg-transparent gap-9 text-center w-[50%] mx-auto my-10'><MdAddBox className='bg-transparent'/>Post</span></NavLink>
