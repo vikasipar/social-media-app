@@ -1,4 +1,4 @@
-# <img src="https://cdn-icons-png.flaticon.com/512/1617/1617193.png" width="40">  &nbsp;&nbsp; ezgram - a Social Media App
+# <img src="https://cdn-icons-png.flaticon.com/512/1617/1617193.png" width="40">  &nbsp;&nbsp; ezgram - A Social Media App
 #### [ 👉 view site](https://ezgram.vercel.app/)
 ### Overview
 This Social Media App is a dynamic platform built using React.js, Recoil, Tailwind CSS, Firebase, and Random User API. It facilitates a vibrant social experience with features such as user authentication, posting content, liking, commenting, friend suggestions, and viewing stories.
