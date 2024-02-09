@@ -30,7 +30,7 @@ The motivation behind this Social Media App project was to delve into the world 
 
 - **React.js:** A powerful JavaScript library for building user interfaces.
   
-- **Recoil:** State management library for React applications, ensuring efficient and reactive data handling.
+- **Recoil:** State management library for React applications, ensuring efficient and reactive data handling. [Read more](https://medium.com/@vikasipar/exploring-recoil-simplifying-state-management-in-react-projects-b19adbe3445b).
   
 - **Tailwind CSS:** A highly customizable CSS framework for modern and responsive UIs.
   
